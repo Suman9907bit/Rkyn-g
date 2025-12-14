@@ -1,1299 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shri Radha Krishna Yatri Nibas</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-  body{
-    margin:0;
-    font-family:Arial;
-    background:#f7fbff;
-    color:#0f172a;
-  }
-  header{
-    background:#0b7dd6;
-    color:#fff;
-    padding:10px 0;
-    position:relative;
-    z-index:1000;
-  }
-  .container{max-width:1100px;margin:auto;padding:0 6px}
-
-  nav{display:flex;justify-content:space-between;align-items:center}
-  nav a{color:#fff;text-decoration:none;margin-left:16px;font-weight:600}
-
-  .menu-btn{
-    display:none;
-    background:#fff;
-    color:#0b7dd6;
-    border:0;
-    padding:6px 10px;
-    border-radius:6px;
-    font-weight:600;
-  }
-
-  /* Language Selector */
-  .lang-box{
-    margin-left:10px;
-    padding:6px 10px;
-    border-radius:6px;
-    background:#fff;
-    color:#0b7dd6;
-    font-weight:600;
-    cursor:pointer;
-  }
-
-  /* ---------- LEFT SLIDE MENU ---------- */
-  #sideMenu{
-    position:fixed;
-    top:0;
-    left:-85%;
-    width:70%;
-    height:100%;
-    background:linear-gradient(135deg, #0a3d62, #1e90ff);
-    padding:20px;
-    transition:0.4s ease-in-out;
-    z-index:9999;
-    display:flex;
-    flex-direction:column;
-    opacity:0;
-    transform:translateX(-20px);
-  }
-  #sideMenu.open{
-    left:0;
-    opacity:1;
-    transform:translateX(0);
-  }
-
-  #sideMenu a{
-    color:white;
-    padding:14px 0;
-    text-decoration:none;
-    border-bottom:1px solid rgba(255,255,255,0.25);
-    font-weight:600;
-    font-size:17px;
-  }
-
-  #overlay{
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,0.8);
-    display:none;
-    z-index:9998;
-  }
-
-  @media(max-width:700px){
-    nav a{display:none}
-    .menu-btn{display:block}
-  }
-  .hero-slider{
-    width:100%;
-    position:relative;
-    overflow:hidden;
-  }
-
-  .hero-slide{
-    width:100%;
-    position:absolute;
-    top:0; left:0;
-    opacity:0;
-    transition:opacity 1.5s ease-in-out;
-  }
-
-  .hero-slide img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-  .hero-slide.active{
-    opacity:1;
-    position:relative;
-    z-index:1;
-	
-
-  /* Dark overlay */
-  .hero-slider::after{
-    content:"";
-    position:absolute;
-    top:0; left:0;
-    width:100%; 
-    height:100%;
-    background:rgba(0,0,0,0.25);
-    z-index:2;
-    pointer-events:none;
-  }}
-  marquee{
-    background:#cf638b;
-    color:#fff;
-    padding:8px 0;
-    font-weight:600;
-    margin-bottom:20px
-  }
-
-  .section{padding:30px 16px}
-  h2{margin-top:0;color:#0b7dd6}
-
-  footer{
-    background:#0b1220;
-    color:#cbd5e1;
-    padding:15px;
-    text-align:center;
-    margin-top:20px
-  }
-
-  .two-box-area{
-    max-width:1100px;
-    margin:40px auto;
-    padding:0 15px;
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-  }
-
-  .box{
-    flex:1;
-    min-height:180px;
-    padding:20px;
-    border-radius:12px;
-    background:#ffffff;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    font-size:18px;
-    font-weight:600;
-    color:#0b1220;
-  }
-
-  @media(max-width:768px){
-    .two-box-area{flex-direction:column;}
-  }
-
-
- /* Container */
-  .srk-section {
-    max-width: 980px;
-    margin: 40px auto;
-    padding: 32px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
-    box-shadow: 0 16px 48px rgba(7,32,60,0.08);
-    border: 1px solid rgba(11,37,64,0.08);
-    font-family: "Noto Sans", Arial, sans-serif;
-    color: #07243b;
-    line-height: 1.8;
-  }
-
-  .srk-row {
-    display: flex;
-    gap: 32px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .srk-left {
-    flex: 1 1 540px;
-    min-width: 280px;
-  }
-
-  .srk-right {
-    width: 320px;
-    min-width: 240px;
-    align-self: stretch;
-  }
-
-  .srk-title {
-    font-size: 1.6rem;
-    margin: 0 0 12px 0;
-    font-weight: 700;
-    color: #023047;
-  }
-
-  .srk-lead {
-    margin: 8px 0 18px 0;
-    font-size: 1rem;
-    color: #0b3248;
-  }
-
-  .srk-paragraph {
-    background: linear-gradient(90deg, rgba(0,102,102,0.03), rgba(0,102,160,0.01));
-    padding: 16px 18px;
-    border-radius: 12px;
-    border: 1px solid rgba(3,50,80,0.04);
-    margin-bottom: 18px;
-  }
-
-  .srk-features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .srk-features li {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    padding: 12px 10px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    background: rgba(3,50,80,0.04);
-    font-weight: 600;
-    color: #04324a;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .srk-features li:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  }
-
-  .srk-feat-icon {
-    min-width: 40px;
-    min-height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(180deg,#00c9b7,#008b8b);
-    color: white;
-    border-radius: 10px;
-    font-size: 20px;
-    box-shadow: 0 6px 18px rgba(0,141,141,0.15);
-  }
-
-  .srk-cta {
-    margin-top: 20px;
-  }
-
-  .srk-button {
-    display: inline-block;
-    padding: 12px 22px;
-    background: #007a85;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 28px rgba(0,122,133,0.18);
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .srk-button:hover {
-    background: #005f68;
-    transform: translateY(-2px);
-  }
-
-  .srk-sub {
-    margin-top: 14px;
-    color: #074055;
-    font-weight: 600;
-  }
-
-  @media (max-width:880px){
-    .srk-row { flex-direction: column; }
-    .srk-right { width: 100%; }
-  }
-
-
-
-  /* Map description card - adjust colors/fonts as you like */
-  .map-card {
-    max-width: 900px;
-    margin: 18px auto;
-    padding: 22px;
-    border-radius: 12px;
-    box-shadow: 0 8px 28px rgba(13,38,59,0.08);
-    background: linear-gradient(180deg, #ffffff, #fbfdff);
-    font-family: "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-    color: #0b2540;
-    line-height: 1.65;
-    border: 1px solid rgba(11,37,64,0.06);
-  }
-
-  .map-card h2 {
-    margin: 0 0 10px 0;
-    font-size: 1.45rem;
-    letter-spacing: .2px;
-  }
-
-  .map-card p {
-    margin: 8px 0;
-    font-size: 1rem;
-  }
-
-  .map-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    margin: 12px 0 18px 0;
-  }
-
-  .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(6, 88, 148, 0.04);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 0.98rem;
-  }
-
-  .map-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    border: 1px solid transparent;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: #0b63a8;
-    color: #fff;
-    border-color: rgba(11,99,168,0.12);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: #0b2540;
-    border-color: rgba(11,37,64,0.08);
-  }
-
-  /* Map iframe container */
-  .map-embed {
-    margin-top: 16px;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 320px;
-    width:100%;
-    background: #e9f2fb;
-  }
-
-  @media (max-width:600px){
-    .map-card { padding: 16px; margin: 12px; }
-    .map-embed { height: 240px; }
-    .map-card h2 { font-size: 1.2rem; }
-  }
-
-
-
-
-/* Main Button */
-.suman-button{
-    background:#007bff;
-    color:white;
-    padding:14px 28px;
-    font-size:18px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.3s;
-}
-.suman-button:hover{
-    background:#0056d2;
-}
-
-/* Hidden Form Area */
-.suman-content{
-    display:none;
-    margin-top:20px;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Form Box */
-.form-box{
-    width:75%;
-    max-width:450px;
-    background:#1a1a1a;
-    padding:25px;
-    margin:auto;
-    border-radius:15px;
-    box-shadow:0 0 20px rgba(0,0,0,0.4);
-    animation: slideDown 0.5s ease;
-}
-
-/* Input Fields */
-.form-box input, .form-box textarea{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:8px;
-    margin-bottom:12px;
-    font-size:16px;
-    box-sizing:border-box;
-}
-
-.form-box input[type="submit"]{
-    background:#28a745;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    margin-top:10px;
-}
-.form-box input[type="submit"]:hover{
-    background:#1f8c39;
-}
-
-/* Animations */
-@keyframes fadeIn{
-    from{opacity:0;} to{opacity:1;}
-}
-@keyframes slideDown{
-    from{transform:translateY(-20px); opacity:0;}
-    to{transform:translateY(0); opacity:1;}
-}
-
-
-
-
-
-
-
-
-
-
-*{box-sizing:border-box}
-body{margin:0;font-family:'Segoe UI',sans-serif}
-
-/* Overlay */
-.popup-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  padding:12px;
-}
-
-/* Popup Box */
-.popup-box{
-  width:100%;
-  max-width:420px;
-  max-height:95vh;
-  background:#fff;
-  border-radius:16px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  animation:popup .35s ease;
-}
-@keyframes popup{
-  from{transform:translateY(30px);opacity:0}
-  to{transform:translateY(0);opacity:1}
-}
-
-/* Header */
-.popup-header{
-  background:linear-gradient(90deg,#80c1f2,#d3e5f2);
-  padding:10px 14px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.popup-header span{font-weight:700;color:navy;font-size:14px}
-.popup-close{
-  width:32px;height:32px;
-  border-radius:50%;
-  border:2px solid #6ab3eb;
-  background:#fff;
-  cursor:pointer;
-  font-size:18px;
-}
-
-/* Image */
-.popup-img img{
-  width:100%;
-  max-height:160px;
-  object-fit:cover;
-  display:block;
-}
-
-/* Content */
-.popup-content{
-  padding:14px;
-  font-size:14px;
-  line-height:1.6;
-  color:#333;
-  overflow-y:auto;
-}
-
-/* Badges */
-.badges span{
-  display:inline-block;
-  background:#ecf0f1;
-  padding:4px 7px;
-  border-radius:6px;
-  font-size:11px;
-  margin:3px 3px 0 0;
-}
-
-/* Buttons */
-.action-btns{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin:8px 0;
-}
-.btn{
-  flex:1 1 100%;
-  padding:10px;
-  border-radius:8px;
-  font-weight:600;
-  text-decoration:none;
-  color:#fff;
-  text-align:center;
-}
-.call{background:#e74c3c}
-.whatsapp{background:#25D366}
-.map{background:#3498db}
-
-/* Form */
-.popup-form input,
-.popup-form button{
-  width:100%;
-  padding:9px;
-  margin-top:6px;
-  border-radius:7px;
-  font-size:14px;
-}
-.popup-form input{border:1px solid #ccc}
-.popup-form button{
-  background:#138bed;
-  color:#fff;
-  border:none;
-  font-weight:600;
-}
-
-@media(min-width:768px){
-  .popup-box{max-width:520px}
-  .popup-img img{max-height:200px}
-  .btn{flex:1}
-}
-
-
-
-
-
-
-
-
-
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Hind Siliguri', sans-serif;
+      background:linear-gradient(135deg,#f4f7ff,#eef2ff);
+      color:#333;
+    }
+    header{
+      padding:40px 20px;
+      text-align:center;
+    }
+    header h1{
+      margin:0;
+      font-size:32px;
+      font-weight:700;
+      color:#1f3cff;
+    }
+    header p{
+      margin-top:8px;
+      color:#555;
+      font-size:16px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:18px;
+    }
+
+    .item{
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      background:#fff;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      cursor:pointer;
+    }
+
+    .item img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+      transition:transform .5s ease;
+    }
+
+    .item:hover img{
+      transform:scale(1.1);
+    }
+
+    .caption{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,0));
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+      color:#fff;
+      opacity:0;
+      transition:.4s;
+    }
+
+    .item:hover .caption{
+      opacity:1;
+    }
+
+    .caption h3{
+      margin:0;
+      font-size:18px;
+      font-weight:600;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:999;
+    }
+
+    .lightbox img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:12px;
+      box-shadow:0 20px 40px rgba(0,0,0,.4);
+    }
+
+    .lightbox span{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:34px;
+      color:#fff;
+      cursor:pointer;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 10px;
+      color:#777;
+      font-size:14px;
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
-  <div class="container">
-    <nav>
-      <div style="font-size:20px;font-weight:700" data-lang="title">
-        Shri Radha Krishna Yatri Nibas
-      </div>
-
-      <div style="display:flex;align-items:center;">
-        <button class="menu-btn" onclick="openMenu()">Menu ☰</button>
-
-        <!-- Language Selector -->
-        <select class="lang-box" onchange="changeLang(this.value)">
-          <option value="en">English</option>
-          <option value="bn">বাংলা</option>
-          <option value="od">ଓଡିଆ</option>
-        </select>
-      </div>
-
-      <div>
-        <a href="#" data-lang="menu_home">Home</a>
-        <a href="https://suman9907bit.github.io/Rkyn-ab/" data-lang="menu_about">About</a>
-        <a href="#gallery" data-lang="menu_gallery">Gallery</a>
-        <a href="https://suman9907bit.github.io/Rkyn/" data-lang="menu_work">Work Area</a>
-        <a href="#social" data-lang="menu_social">Social Media</a>
-        <a href="https://suman9907bit.github.io/Srkyn-booking/" data-lang="menu_book">Book Now</a>
-        <a href="#contact" data-lang="menu_contact">Contact</a>
-      </div>
-    </nav>
-  </div>
+  <h1>আমাদের গ্যালারি</h1>
+  <p>Shri Radha Krishno Yatri Nibas.</p>
 </header>
 
-<!-- SIDE MENU -->
-<div id="sideMenu">
-<h1 style="color:yellow;">Shri Radha Krishno Yatri Niwas</h1>
-  <a href="#" data-lang="menu_home">🏠 Home</a>
-  <a href="https://suman9907bit.github.io/Rkyn-ab/" data-lang="menu_about">ℹ About</a>
-  <a data-lang="menu_gallery">🖼 Gallery</a>
-  <a href="https://suman9907bit.github.io/Rkyn/" data-lang="menu_work">💼 Work Area</a>
-  <a href="https://suman9907bit.github.io/Rkyn/" data-lang="menu_social">🔗 Social Media</a>
-  <a href="https://suman9907bit.github.io/Srkyn-booking/" data-lang="menu_book">📅 Book Now</a>
-  <a data-lang="menu_contact">📞 Contact</a>
- <a href="https://suman9907bit.github.io/Rkyn-TC/" data-lang="menu_contact">   Terms & Conditions</a>
-	
-	
-
-	<br>
-  <button onclick="closeMenu()" style="background:none;color:white;padding:10px;border-radius:10px;border:0;font-weight:700">
-    
- 
-
-
-<br><image src="https://static.wixstatic.com/media/95462a_cecaf57dc6264bcfa0d80512f0252372~mv2.gif" width="100%"> 
-
-“To close the menu bar, please click the spinning icon above.”
- </button>
-</div>
-<div id="overlay" onclick="closeMenu()">
-</div>
-<!-- HERO SLIDER -->
-<div class="hero-slider">
-
-<div class="hero-slide active">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipN9FjOXjWT8wfDKPApC8_Wqxhy_b4w_kY-P9WWu=s1360-w1360-h1020-rw">
-  </div>
-
-
-  <div class="hero-slide ">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipO5KF96lDsPWnF64bRWGGnq6NJkzClRoN-PcAKX=s1360-w1360-h1020-rw">
-  </div>
-
-  <div class="hero-slide">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipO5KF96lDsPWnF64bRWGGnq6NJkzClRoN-PcAKX=s1360-w1360-h1020-rw">
-  </div>
-
-  <div class="hero-slide">
-    <img src="https://cdn.myportfolio.com/93bea8ef802a988ed8ab44889dc82b83/b99b565b-5336-4cd2-b731-c64c24515600_rw_1200.gif?h=d41ed58a4aa58082b4478ffc4571d416">
-  </div>
-
-<div class="hero-slide">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipN2wb8qdcVI898aQS3oUT6z-aujUoOUDJ5K1-iT=s1360-w1360-h1020-rw">
-  </div>
-
-
-<div class="hero-slide">
-    <img src="https://lh3.googleusercontent.com/p/AF1QipN9FjOXjWT8wfDKPApC8_Wqxhy_b4w_kY-P9WWu=s1360-w1360-h1020-rw">
-  </div>
-
-</div>
-
-
-<script>
-  const slides = document.querySelectorAll('.hero-slide');
-  let index = 0;
-
-  function changeSlide(){
-    slides[index].classList.remove('active');
-    index = (index + 1) % slides.length;
-    slides[index].classList.add('active');
-  }
-
-  setInterval(changeSlide, 3500); // 3.5 sec autoplay
-</script>
-
-
-
-
-<marquee data-lang="welcome">★• Welcome to Shri Radha Krishna Yatri Nibas ★</marquee>
-
-
-<image src="https://api.blessingsonthenet.com/uploads/microsite/ee6fa56198b990e87c47ca7718589075-1699072607854-Kapila%20Muni%20Temple%20Ganga%20Sagar.jpg" width="100%">
-
-
-<section class="srk-section" aria-labelledby="srk-heading">
-  <div class="srk-row">
-    <div class="srk-left">
-      <h2 id="srk-heading" class="srk-title">
-        Ganga Sagar: One of India’s Sacred Pilgrimage Sites — Confluence of Ganga & Bay of Bengal
-      </h2>
-
-      <div class="srk-paragraph">
-        <p class="srk-lead">
-          Ganga Sagar is one of India’s most revered pilgrimage sites, where the sacred flow of the Ganga merges into the vast Bay of Bengal. During Makar Sankranti, the Ganga Sagar fair comes alive with devotion, enthusiasm, and spiritual vibrancy, attracting millions from across the world to partake in an unparalleled holy gathering.
-        </p>
-
-        <p class="srk-lead">
-          In this invaluable spiritual journey, <strong>Shri Radha Krishna Yatri Nibas</strong> becomes your trusted companion—ensuring <strong>comfort, safety, and the highest standard of hospitality</strong> throughout your travel experience.
-        </p>
-      </div>
-
-      <p class="srk-sub">
-        Our mission is to safeguard your devotion, peace, and comfort at every step of your journey.
-      </p>
-
-      <div class="srk-cta">
-        <a class="srk-button" href="#contact">Book / Contact Now</a>
-      </div>
-    </div>
-
-    <aside class="srk-right" aria-label="Shri Radha Krishna Yatri Nibas location & facilities">
-      <ul class="srk-features">
-        <li><span class="srk-feat-icon">📍</span> <span>Ganga Sagar Fair Ground</span></li>
-        <li><span class="srk-feat-icon">🛣️</span> <span>Easy Access from Main Road</span></li>
-        <li><span class="srk-feat-icon">🛒</span> <span>Nearby Market & Essential Amenities</span></li>
-        <li><span class="srk-feat-icon">🩺</span> <span>Primary Medical Support & Services</span></li>
-        <li><span class="srk-feat-icon">🚌</span> <span>Transportation & Connectivity</span></li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
-
-<!-- TWO BOX -->
-<div class="two-box-area">
-
-  <div class="box">
-    <h2 data-lang="about_title">About Us</h2>
-    <p data-lang="about_text1">
-      A calm, clean and affordable stay — where guest comfort is our priority.
-      Whether you need rest during travel or a place to stay overnight,
-      Shri Radha Krishna Yatri Nibas is always ready for you.
-    </p>
-
-    <p data-lang="about_text2">
-      Guests can rest, cook, eat or stay overnight.
-      With a peaceful environment, easy transportation and homely safety,
-      it is an ideal resting place for travelers.
-    </p>
-  </div>
-
-  <div class="box">
-    <h2 data-lang="why_title">Why Choose Us?</h2>
-
-    <ul style="line-height:1.8;margin:0;padding-left:20px;font-size:16px;">
-      <li data-lang="f1">✔ Free Wi-Fi</li>
-      <li data-lang="f2">✔ Clean Drinking Water</li>
-      <li data-lang="f3">✔ Safe Parking Facility</li>
-      <li data-lang="f4">✔ Electric Backup</li>
-      <li data-lang="f5">✔ Clean & Comfortable Rooms</li>
-      <li data-lang="f6">✔ Family-Friendly Environment</li>
-      <li data-lang="f7">✔ Affordable Rest & Stay</li>
-    </ul>
-
-    <p style="margin-top:10px;" data-lang="why_note">
-      Our goal is to provide every guest with peace and safety like home.
-      We are always ready to make your journey more comfortable.
-    </p>
+<div class="container">
+  <div class="gallery">
+    <div class="item"><img src="https://picsum.photos/id/1015/600/400" alt=""><div class="caption"></div></div>
+    <div class="item"><img src="https://picsum.photos/id/1016/600/400" alt=""><div class="caption"></div></div>
+    <div class="item"><img src="https://picsum.photos/id/1020/600/400" alt=""><div class="caption"></h3></div></div>
+    <div class="item"><img src="https://picsum.photos/id/1024/600/400" alt=""><div class="caption"></h3></div></div>
+    <div class="item"><img src="https://picsum.photos/id/1035/600/400" alt=""><div class="caption"><h3></h3></div></div>
+    <div class="item"><img src="https://picsum.photos/id/1043/600/400" alt=""><div class="caption"><h3></h3></div></div>
   </div>
 </div>
 
-
-<center>
-<div style="width:70%;">
-  <image src="https://cdn.dribbble.com/userupload/30678570/file/original-034d2c7e4247f3b3be90003b2d5d5aca.gif" width="49%">
-
-<image src="https://cdn.dribbble.com/userupload/22106855/file/original-cf9939beb1ec36bb24aea4b4fda5eddb.gif" width="49%">
-
-<p> Book our mosque and comfortable hotel now. Enjoy spacious rooms, free Wi-Fi, 24-hour service and a pleasant atmosphere — ideal for family trips or business trips. Reserve today to book at the best price!</p>
-
-
-
-<a href="https://suman9907bit.github.io/Srkyn-booking/"target="top">
-<image src="https://static.vecteezy.com/system/resources/thumbnails/050/699/821/small/red-book-now-label-in-modern-style-on-white-background-banner-promotion-click-button-sticker-design-png.png" width="50%"></a>
+<div class="lightbox" id="lightbox">
+  <span onclick="closeBox()">&times;</span>
+  <img id="lightImg" src="">
 </div>
 
-
-
-
-</center>
-<div style="width:100%;background-color:black;height:auto"><br>
-<center>
-
-  <h1 style="color:white; ">Hotel for Facality</h1>
-  <br><br>
-<image src="https://freedesignfile.com/upload/2015/11/Free-Wi-Fi-logos-vector-design-01.jpg" height="120px" width="AUTO">
-
-
-<image src="https://img.freepik.com/premium-vector/parking-signal-black-background-vector-illustration_24908-43457.jpg" height="120px" width="AUTO">
-
-<image src="https://png.pngtree.com/png-vector/20220817/ourmid/pngtree-electricity-logo-template-lighting-bolt-sign-symbol-battery-template-electric-vector-png-image_48157368.jpg" height="120px" width="AUTO">
-
-  <image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK7g9EHeMi7fJ-oUNVSORp3uvL83-1QUDCqQ&s" height="120px" width="AUTO">
-
-</center></div>
-
-
-<image src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22323100/Android_Auto_Play_A_Game.gif?quality=90&strip=all&crop=0,0,100,100" width="100%">
-
-
-
-<div class="map-card" role="region" aria-label="Shri Radha Krishna Yatri Nibas location">
-  <h2>Welcome to Shri Radha Krishna Yatri Nibas!</h2>
-
-  <p>
-    To make your journey easier and more comfortable, our complete address is now conveniently linked on Google Maps. You can easily locate our location using the interactive map below.
-  </p>
-
-  <p>
-    <strong>Shri Radha Krishna Yatri Nibas</strong> is situated in a location where the main road, nearby market, and essential facilities are easily accessible. Our location is precisely set on the map, so you can reach us directly from any place.
-  </p>
-
-  <div class="map-features" aria-hidden="false">
-    <div class="feature-item">📍 Real-time Route</div>
-    <div class="feature-item">📏 Distance</div>
-    <div class="feature-item">🕒 Travel Time</div>
-    <div class="feature-item">🗺️ Nearby Landmarks</div>
-    <div class="feature-item">🚗 Detailed Street View</div>
-  </div>
-
-  <p>
-    You can zoom the map to view the area in full, or click the <strong>“Directions”</strong> button to get the fastest route from your current location.
-  </p>
-
-  <p>
-    Our guests’ convenience is our top priority—no need to worry about getting lost; with just one click, the clear and precise location of <strong>Shri Radha Krishna Yatri Nibas</strong> will open right before you.
-  </p>
-
-  <div class="map-actions">
-    <!-- Replace the href with your actual Google Maps link -->
-    <a class="btn btn-primary" href="https://www.google.com/maps/place/Shri+Radha+Kr%C3%ADshno+yatri+Nibas/@21.8905999,88.1657699,17z" 
-   target="_blank" rel="noopener noreferrer">
-      Open in Google Maps
-    </a>
-    <a class="btn btn-outline" href="#contact">
-      Contact / Book Now
-    </a>
-  </div>
-
-  <div class="map-wrap">
-    <div class="map-ratio">
-      <!-- Insert your Google Maps embed link here -->
-     <br><br> <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.142185251571!2d88.16576993802012!3d21.89059988006658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0255006e3d83c9%3A0xb53e52db2e8e9918!2sShri%20Radha%20Kr%C3%AChno%20yatri%20Nibas!5e0!3m2!1sen!2sin!4v1764954089367!5m2!1sen!2sin"
-        width="100%"
-        height="450"
-        style="border:0;
-	border-radius:20px;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div> 
-  </div>
-</div>
-    
-  </div>
-
-
-
-
-
-<center>
-    <button class="suman-button" onclick="toggleForm()">
-        Message Mr. Avijit to get Hotel Information
-    </button>
-
-    <div class="suman-content" id="formArea">
-        <div class="form-box">
-            <h1 style="color:white; text-align:center;">Send Us Message</h1>
-            <p style="color:white; text-align:center;">
-                Complete the form below so we can talk about your<br>
-                vision, goal and how we might help.
-            </p>
-
-            <form action="https://formsubmit.co/janaonlineservice4@gmail.com" method="POST">
-                <input type="text" name="Name" placeholder="Name" required>
-                <input type="number" name="Mobile No" placeholder="Your Mobile No" required>
-                <textarea name="message" placeholder="Please type your message..." required></textarea>
-                <input type="submit" value="SEND MESSAGE">
-            </form>
-
-            <h5 style="color:white; text-align:center; margin-top:15px;">
-                Mail by Mr. Avijit Mal
-            </h5>
-        </div>
-    </div>
-</center>
-<script>
-function toggleForm(){
-    var form = document.getElementById("formArea");
-    if(form.style.display === "none" || form.style.display === ""){
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-}
-</script>
-
-<!-- Modern Stylish Footer -->
-<footer style="
-  background: linear-gradient(135deg, #0a3d62, #1e90ff);
-  color: white;
-  padding: 40px 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-">
-
-  <h1 style="margin-bottom: 10px; color:#ffeb3b; font-size:28px;">
-    Shri Radha Krishno Yatri Nibas
-  </h1>
-
-  <p style="margin: 5px; font-size:16px;">📍 Location: Lot No 8, Ganga Sagar, West Bengal</p>
-
-  <p style="margin: 5px; font-size:16px;">
-    📞 Phone: 
-    <a href="tel:+917557069308" style="color:#ffdfdf; text-decoration:none; font-weight:bold;">
-      +91 75570 69308
-    </a>
-  </p>
-
-  <p style="margin: 5px; font-size:16px;">
-    📧 Email:
-    <a href="mailto:" style="color:#ffdfdf; text-decoration:none; font-weight:bold;">
-      shriradhakrishnoyatrinibas@mail.com
-    </a>
-  </p>
-
-  <!-- Social Icons -->
-  <div style="margin-top:20px;">
-    <a href="#" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" 
-      width="35px" alt="Facebook" 
-      style="transition:0.3s; filter:drop-shadow(0 0 5px white);">
-    </a>
-    
-    <a href="#" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" 
-      width="35px" alt="Instagram"
-      style="transition:0.3s; filter:drop-shadow(0 0 5px white);">
-    </a>
-    
-    <a href="#" target="_blank" style="margin:0 10px;">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
-      width="35px" alt="YouTube"
-      style="transition:0.3s; filter:drop-shadow(0 0 5px white);">
-    </a>
-  </div>
-
-  <hr style="margin:25px auto; width:80%; border-color:#bcdcff;">
-
-  <p style="font-size:15px; color:#ffeb3b;">
-    &copy; 2025 Radha Krishno Yatri Nibas. All rights reserved. <br>
-    Designed by <a href="https://suman9907bit.github.io/skillaboute/" style="color: inherit;         /* লিঙ্ক টেক্সট প্যারেন্টের রঙ নেবে */
-  text-decoration: none; "><b>Mr. Suman Jana (Web Expert)</a></b>
-  </p>
-
+<footer>
+  © 2025 | Professional Gallery Design
 </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
-function openMenu(){document.getElementById("sideMenu").classList.add("open");document.getElementById("overlay").style.display="block";}
-function closeMenu(){document.getElementById("sideMenu").classList.remove("open");document.getElementById("overlay").style.display="none";}
+  const items = document.querySelectorAll('.item img');
+  const lightbox = document.getElementById('lightbox');
+  const lightImg = document.getElementById('lightImg');
 
-/* ---------------- LANGUAGE DATA ---------------- */
-const langData = {
-
-  "en":{
-    "title":"Shri Radha Krishna Yatri Nibas",
-    "menu_home":"Home",
-    "menu_about":"About",
-    "menu_gallery":"Gallery",
-    "menu_work":"Work Area",
-    "menu_social":"Social Media",
-    "menu_book":"Book Now",
-    "menu_contact":"Contact",
-    "welcome":"★• Welcome to Shri Radha Krishna Yatri Nibas ★",
-
-    "about_title":"About Us",
-    "about_text1":"A calm, clean and affordable stay — where guest comfort is our priority. Whether you need rest during travel or a place to stay overnight, Shri Radha Krishna Yatri Nibas is always ready for you.",
-    "about_text2":"Guests can rest, cook, eat or stay overnight. With a peaceful environment, easy transportation and homely safety, it is an ideal resting place for travelers.",
-
-    "why_title":"Why Choose Us?",
-    "f1":"✔ Free Wi-Fi",
-    "f2":"✔ Clean Drinking Water",
-    "f3":"✔ Safe Parking Facility",
-    "f4":"✔ Electric Backup",
-    "f5":"✔ Clean & Comfortable Rooms",
-    "f6":"✔ Family-Friendly Environment",
-    "f7":"✔ Affordable Rest & Stay",
-    "why_note":"Our goal is to provide every guest with peace and safety like home. We are always ready to make your journey more comfortable.",
-
-    "footer":"© Shri Radha Krishna Yatri Nibas | All Rights Reserved"
-  },
-
-  "bn":{
-    "title":"শ্রী রাধা কৃষ্ণ যাত্রী নিবাস",
-    "menu_home":"হোম",
-    "menu_about":"আমাদের সম্পর্কে",
-    "menu_gallery":"গ্যালারি",
-    "menu_work":"ওয়ার্ক এরিয়া",
-    "menu_social":"সোশ্যাল মিডিয়া",
-    "menu_book":"বুক নাও",
-    "menu_contact":"যোগাযোগ",
-    "welcome":"★• স্বাগতম শ্রী রাধা কৃষ্ণ যাত্রী নিবাসে ★",
-
-    "about_title":"আমাদের সম্পর্কে",
-    "about_text1":"শান্ত, পরিচ্ছন্ন এবং সাশ্রয়ী আবাস — যেখানে অতিথির স্বাচ্ছন্দ্যই আমাদের প্রধান লক্ষ্য। যাত্রাপথে একটু বিশ্রাম বা রাত কাটানোর জন্য শ্রী রাধা কৃষ্ণ যাত্রী নিবাস সবসময় প্রস্তুত।",
-    "about_text2":"অতিথিরা চাইলে এখানে বিশ্রাম, রান্না, খাওয়া কিংবা রাতেও থাকতে পারবেন। শান্ত পরিবেশ, সহজ যাতায়াত এবং পরিবারের মতো নিরাপত্তা — সব মিলিয়ে এটি একটি আদর্শ বিশ্রামস্থল।",
-
-    "why_title":"কেন আমাদের নির্বাচন করবেন?",
-    "f1":"✔ ফ্রি Wi-Fi",
-    "f2":"✔ পরিষ্কার পানীয় জল",
-    "f3":"✔ নিরাপদ পার্কিং সুবিধা",
-    "f4":"✔ বিদ্যুৎ ব্যাকআপ",
-    "f5":"✔ পরিচ্ছন্ন ও আরামদায়ক কক্ষ",
-    "f6":"✔ পরিবার-বান্ধব পরিবেশ",
-    "f7":"✔ সাশ্রয়ী থাকার ব্যবস্থা",
-    "why_note":"প্রতিটি অতিথিকে ঘরের মতো শান্তি ও নিরাপত্তা দেওয়াই আমাদের লক্ষ্য। আপনার সফর আরও আরামদায়ক করতে আমরা প্রস্তুত।",
-
-    "footer":"© শ্রী রাধা কৃষ্ণ যাত্রী নিবাস | সর্বস্বত্ব সংরক্ষিত"
-  },
-
-  "od":{
-    "title":"ଶ୍ରୀ ରାଧା କୃଷ୍ଣ ଯାତ୍ରୀ ନିବାସ",
-    "menu_home":"ହୋମ୍",
-    "menu_about":"ଆମ ବିଷୟରେ",
-    "menu_gallery":"ଗ୍ୟାଲେରୀ",
-    "menu_work":"କାମ ଅଞ୍ଚଳ",
-    "menu_social":"ସୋସିଆଲ ମିଡିଆ",
-    "menu_book":"ବୁକ୍ ନାଉ",
-    "menu_contact":"ଯୋଗାଯୋଗ",
-    "welcome":"★• ଶ୍ରୀ ରାଧା କୃଷ୍ଣ ଯାତ୍ରୀ ନିବାସକୁ ସ୍ୱାଗତ ★",
-
-    "about_title":"ଆମ ବିଷୟରେ",
-    "about_text1":"ଶାନ୍ତ, ପରିସ୍କାର ଏବଂ ସହଜ ରହିବା ସୁବିଧା — ଯେଉଁଠାରେ ଅତିଥିଙ୍କ ସୁବିଧା ଆମ ପ୍ରାଥମିକତା। ଯାତ୍ରା ସମୟରେ ବିଶ୍ରାମ କିମ୍ବା ରାତିରେ ରହିବା ଆବଶ୍ୟକ ହେଲେ ଏଠା ଭଲ ସ୍ଥାନ।",
-    "about_text2":"ଅତିଥିମାନେ ବିଶ୍ରାମ, ରନ୍ଧଣ, ଖାଦ୍ୟ ଆସ୍ୱାଦ କିମ୍ବା ରାତିରେ ରହିପାରିବେ। ଶାନ୍ତ ପରିବେଶ, ସହଜ ଯାତାୟତ ଏବଂ ଘରୋଇ ସୁରକ୍ଷା — ଏହାକୁ ଯାତ୍ରୀମାନଙ୍କ ପାଇଁ ଉଚିତ ସ୍ଥାନ କରିଥାଏ।",
-
-    "why_title":"କାହିଁକି ଆମକୁ ବାଛିବେ?",
-    "f1":"✔ ମୂଳ୍ୟହୀନ Wi-Fi",
-    "f2":"✔ ପରିସ୍କାର ପାନୀୟ ଜଳ",
-    "f3":"✔ ସୁରକ୍ଷିତ ପାର୍କିଂ",
-    "f4":"✔ ବିଦ୍ୟୁତ ବ୍ୟାକଅପ୍",
-    "f5":"✔ ପରିସ୍କାର ଓ ସୁବିଧାଜନକ କକ୍ଷ",
-    "f6":"✔ ପରିବାର ସାଥିକ ପରିବେଶ",
-    "f7":"✔ ସହଜ ମୂଲ୍ୟରେ ରହିବା ସୁବିଧା",
-    "why_note":"ଆମ ଲକ୍ଷ୍ୟ ହେଉଛି ପ୍ରତ୍ୟେକ ଅତିଥିକୁ ଘରୋଇ ସୁବିଧା ଓ ସୁରକ୍ଷା ଦେବା। ଆମେ ସଦା ଆପଣଙ୍କ ଯାତ୍ରାକୁ ସୁଖଦ କରିବାକୁ ପ୍ରସ୍ତୁତ।",
-
-    "footer":"© ଶ୍ରୀ ରାଧା କୃଷ୍ଣ ଯାତ୍ରୀ ନିବାସ | ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ"
-  }
-};
-
-/* Change Language */
-function changeLang(code){
-  document.querySelectorAll("[data-lang]").forEach(el=>{
-    let key = el.getAttribute("data-lang");
-    el.innerHTML = langData[code][key];
+  items.forEach(img => {
+    img.addEventListener('click', () => {
+      lightImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
   });
-}
-</script>
 
-
-
-
-
-
-  <!-- Floating Contact Button -->
-  <style>
-    .float-btn{
-      position:fixed;
-      bottom:20px;
-      right:20px;
-      background:#2563eb; /* Smart Blue */
-      color:#fff;
-      width:60px;
-      height:60px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      border-radius:50%;
-      font-size:30px;
-      cursor:pointer;
-      box-shadow:0 6px 14px rgba(0,0,0,0.35);
-      z-index:9999;
-      transition:0.3s;
-    }
-    .float-btn:hover{background:#1d4ed8;transform:scale(1.08);}
-    .float-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#2563eb; /* Smart Blue */
-  color:#fff;
-  width:60px;
-  height:60px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  border-radius:50%;
-  font-size:30px;
-  cursor:pointer;
-  box-shadow:
-    0 6px 14px rgba(0,0,0,0.35),
-    0 0 18px rgba(37,99,235,0.75);
-  z-index:9999;
-  transition:0.3s;
-
-  /* ❤️ Pulse Effect */
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); box-shadow:0 0 18px rgba(37,99,235,0.75); }
-  50% { transform: scale(1.08); box-shadow:0 0 28px rgba(37,99,235,1); }
-  100% { transform: scale(1); box-shadow:0 0 18px rgba(37,99,235,0.75); }
-}
-
-    .contact-box{
-      position:fixed;
-      bottom:90px;
-      right:20px;
-      background:#ffffff;
-      border-radius:12px;
-      width:200px;
-      padding:14px;
-      box-shadow:0 6px 16px rgba(0,0,0,0.28);
-      display:none;
-      z-index:9999;
-      animation:pop 0.25s ease-out;
-    }
-
-    @keyframes pop{
-      from{transform:scale(0.8);opacity:0;}
-      to{transform:scale(1);opacity:1;}
-    }
-
-    .contact-box a{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin:8px 0;
-      padding:10px;
-      font-weight:600;
-      border-radius:8px;
-      text-decoration:none;
-      color:#fff;
-      transition:0.25s;
-    }
-
-    .call-btn{background:#16a34a;} /* Green */
-    .call-btn:hover{background:#15803d;}
-
-    .wa-btn{background:#22c55e;} /* Light WhatsApp Green */
-    .wa-btn:hover{background:#16a34a;}
-
-    .mail-btn{background:#ef4444;} /* Red */
-    .mail-btn:hover{background:#dc2626;}
-  </style>
-
-  <div class="float-btn" onclick="toggleContact()"><image src="https://thumbs.dreamstime.com/b/vector-illustration-isolated-white-background-contact-us-mail-call-icons-golden-yellow-contact-us-mail-call-icons-yellow-118008332.jpg" width="55px"style="border-radius:30px;border:20px;"></div>
-  <div class="contact-box" id="contactBox">
-    <a href="tel:+917557069308" class="call-btn">📱 Call Now</a>
-    <a href="https://wa.me/917557069308" class="wa-btn">💬 WhatsApp</a>
-    <a href="shriradhakrishnoyatrinibas@mail.com" class="mail-btn">✉ Email</a>
-  </div>
-
-<script>
-  function toggleContact(){
-    const box=document.getElementById('contactBox');
-    box.style.display = box.style.display==='block' ? 'none' : 'block';
+  function closeBox(){
+    lightbox.style.display = 'none';
   }
-</script>
-
-
-
-
-
-
-<div class="popup-overlay" id="popup">
-  <div class="popup-box">
-
-    <div class="popup-header">
-      <span>🛡️ <b>Important Notice</b></span>
-      <button class="popup-close" onclick="closePopup()">✕</button>
-    </div>
-
-    <div class="popup-img">
-      <img src="https://lh3.googleusercontent.com/p/AF1QipN9FjOXjWT8wfDKPApC8_Wqxhy_b4w_kY-P9WWu=s1360-w1360-h1020-rw">
-    </div>
-
-    <div class="popup-content">
-      <b>Shri Radha Krishno Yatri Nibas</b> welcomes you 🙏  
-
-      <div class="badges">
-        <span>✔ Verified Guest House</span>
-        <span>✔ 24×7 Phone Support</span>
-        <span>✔ No Advance Payment</span>
-      </div>
-
-      After clicking <b>Book Now</b>, the owner will contact you by phone.
-
-      <div class="action-btns">
-        <a href="tel:7557069308" class="btn call">📞 Call Now</a>
-        <a href="https://wa.me/917557069308" class="btn whatsapp">💬 WhatsApp</a>
-        <a href="https://maps.app.goo.gl/f8QVwryVF9BTzk3E8" target="_blank" class="btn map">🗺️ Open Location</a>
-      </div>
-
-      <hr>
-
-      <b>Quick Booking Request</b>
-      <form class="popup-form" onsubmit="sendWhatsApp(event)">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="tel" id="mobile" placeholder="Mobile Number" required>
-        <input type="date" id="date" required>
-        <input type="number" id="persons" placeholder="Number of Persons" required>
-        <button type="submit">Send Request</button>
-      </form>
-    </div>
-
-  </div>
-</div>
-
-<script>
-window.onload=function(){
-  if(!localStorage.getItem("popupShown")){
-    setTimeout(()=>{
-      document.getElementById("popup").style.display="flex";
-    },4000);
-  }
-}
-
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-  localStorage.setItem("popupShown","yes");
-}
-
-function sendWhatsApp(e){
-  e.preventDefault();
-
-  var name = document.getElementById("name").value;
-  var mobile = document.getElementById("mobile").value;
-  var date = document.getElementById("date").value;
-  var persons = document.getElementById("persons").value;
-
-  var message =
-    "Booking Request%0A" +
-    "Name: " + name + "%0A" +
-    "Mobile: " + mobile + "%0A" +
-    "Date: " + date + "%0A" +
-    "Persons: " + persons + "%0A%0A" +
-    "Shri Radha Krishno Yatri Nibas";
-
-  window.open("https://wa.me/9175570 69308?text=" + message, "_blank");
-}
 </script>
 
 </body>
